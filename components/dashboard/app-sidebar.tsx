@@ -1,16 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  IconCategoryFilled,
-  IconDashboard,
-  IconGardenCart,
-  IconHelp,
-  IconInnerShadowTop,
-  IconListSearch,
-  IconRulerMeasure,
-  IconSettings,
-} from "@tabler/icons-react"
+import { IconInnerShadowTop } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/dashboard/nav-documents"
 import { NavMain } from "@/components/dashboard/nav-main"
@@ -25,63 +16,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
-const data = {
-  user: {
-    name: "FyXo",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.png",
-  },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "#",
-      icon: IconDashboard,
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Configurations",
-      url: "#",
-      icon: IconSettings,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: IconHelp,
-    },
-  ],
-  documents: [
-    {
-      name: "Product",
-      url: "/main/product/register",
-      icon: IconGardenCart,
-    },
-    {
-      name: "Product List",
-      url: "/main/product",
-      icon: IconListSearch,
-    },
-    {
-      name: "Product Category 1",
-      url: "/main/product/cat-1",
-      icon: IconCategoryFilled,
-    },
-    {
-      name: "Product Category 2",
-      url: "/main/product/cat-2",
-      icon: IconCategoryFilled,
-    }, {
-      name: "Product Category 3",
-      url: "/main/product/cat-3",
-      icon: IconCategoryFilled,
-    }, {
-      name: "Product Measurement Units",
-      url: "/main/product/measurement-units",
-      icon: IconRulerMeasure,
-    },
-  ],
-}
+import { navigationData } from "@/config/navigations"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -102,12 +37,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavMain items={navigationData.navMain} />
+        <NavDocuments groups={navigationData.documents} />
+        <NavSecondary items={navigationData.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={navigationData.user} />
       </SidebarFooter>
     </Sidebar>
   )
